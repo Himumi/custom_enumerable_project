@@ -41,13 +41,13 @@ module Enumerable
 
   def my_map
     map = []
-    self.each { |item| map << yield(item) }
+    self.my_each { |item| map << yield(item) }
     map
   end
 
   def my_inject(arg)
     temp = arg
-    self.each { |item| temp = yield(temp, item) }
+    self.my_each { |item| temp = yield(temp, item) }
     temp
   end
 end
@@ -59,8 +59,8 @@ end
 class Array
   # Define my_each here
   def my_each
-    for i in self
-      yield(i)
+    for item in self
+      yield(item)
     end
   end
 end
