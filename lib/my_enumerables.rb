@@ -25,11 +25,8 @@ module Enumerable
   end
 
   def my_none?
-    self.my_each do |item|
-      return false if yield(item)
-      return true if [nil, false].include?(yield(item))
-    end
-    false
+    self.my_each { |item| return false if yield(item) }
+    true
   end
 
   def my_count
