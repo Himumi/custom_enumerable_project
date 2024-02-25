@@ -29,13 +29,21 @@ module Enumerable
     true
   end
 
+  # def my_count
+  #   count = 0
+  #   if block_given?
+  #     self.my_each { |item| count += 1 if yield(item) }
+  #     return count
+  #   end
+  #   self.my_each { |item| count += 1}
+  #   count
+  # end
+
   def my_count
     count = 0
-    if block_given?
-      self.my_each { |item| count += 1 if yield(item) }
-      return count
+    self.my_each do |item|
+      block_given? ? yield(item) ? count += 1 : nil : count += 1
     end
-    self.my_each { |item| count += 1}
     count
   end
 
