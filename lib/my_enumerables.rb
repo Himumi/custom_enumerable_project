@@ -45,8 +45,7 @@ module Enumerable
     map
   end
 
-  def my_inject(arg)
-    temp = arg
+  def my_inject(temp = 0)
     self.my_each { |item| temp = yield(temp, item) }
     temp
   end
